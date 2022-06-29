@@ -51,10 +51,20 @@ margin-bottom: 50px;
 box-sizing: border-box;
 overflow: hidden;
 overflow-y: scroll;
+`
+
+export const Movimentation = styled.div`
+width: 100%;
+display: flex;
+justify-content: space-around;
 
 p {
-    text-align: center;
-    font-size: 50px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-bottom: 20px;    
 }
 `
 
