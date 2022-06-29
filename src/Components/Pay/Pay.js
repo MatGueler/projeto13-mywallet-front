@@ -2,9 +2,34 @@ import { Button } from "../Button/Button";
 import { Main, Header } from "./Pay-style";
 import { Container } from "../Container/Container";
 import { Input } from "../Input/Input";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function Pay() {
+
+    const [value, setValue] = useState('')
+    const [description, setDescription] = useState('')
+
+    let navigate = useNavigate()
+
+    function Finish(event) {
+        event.preventDefault();
+
+        if (value.length === 0 || isNaN(Number(value))) {
+            return alert('Informe os dados corretamente!')
+        }
+
+        const body = {
+            value,
+            description,
+            type: 'pay'
+        }
+
+        console.log(body)
+
+        navigate('/menu')
+    }
 
     return (
         <Container>
@@ -14,9 +39,9 @@ function Pay() {
                         Nova saída
                     </h1>
                 </Header>
-                <form>
-                    <Input placeholder="Valor" />
-                    <Input placeholder="Descrição" />
+                <form onSubmit={Finish}>
+                    <Input type='text' placeholder="Valor" onChange={(e) => { setValue(e.target.value) }} value={value} />
+                    <Input type='text' placeholder="Descrição" onChange={(e) => { setDescription(e.target.value) }} value={description} />
                     <Button>
                         Salvar saída
                     </Button>
