@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Input } from '../Input/Input'
 import { Button } from "../Button/Button";
 import { Main } from "./Login-style";
+import axios from 'axios'
 
 
 function Login() {
@@ -19,9 +20,22 @@ function Login() {
             email,
             password
         }
-        console.log(body)
+        if (password.length < 6) {
+            alert('Digite os dados corretamente!')
+        }
+        else {
 
-        navigate('/menu')
+            const promise = axios.post('localhost:5000', body)
+
+            promise.then(res => {
+                console.log('deu')
+            })
+                .catch(err => {
+                    console.log(err)
+                    navigate('/menu')
+                })
+
+        }
     }
 
 
@@ -34,7 +48,7 @@ function Login() {
                     <Input type='password' placeholder="Senha" onChange={(e) => { setPassword(e.target.value) }} value={password} />
                     <Button>Entrar</Button>
                 </form>
-                <h2>Primeira vez? Cadastre-se!</h2>
+                <h2 onClick={() => navigate('/cadastro')}>Primeira vez? Cadastre-se!</h2>
             </Main>
         </Container>
     )
