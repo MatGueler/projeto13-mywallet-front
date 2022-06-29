@@ -1,22 +1,61 @@
 import { Container } from "../Container/Container";
+import { useNavigate } from "react-router-dom";
 import { Input } from '../Input/Input'
 import { Button } from '../Button/Button'
 import { Main } from "./Register-style";
+import { useState } from 'react'
+import axios from "axios";
 
 
 function Register() {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [name, setName] = useState('')
+    const [confirm, setConfirm] = useState('')
+
+    let navigate = useNavigate()
+
+    function CreactAcount(event) {
+        event.preventDefault();
+
+        if (password.length < 6 || confirm !== password) {
+            return alert('Digite os dados corretamente!')
+        }
+        const body = {
+            email,
+            password,
+            name
+        }
+
+        const promise = axios.post('localhost:5000', body)
+
+        promise
+            .then(res => {
+                alert('deu bom')
+            })
+            .catch(err => {
+                console.log(err)
+                console.log(body)
+                navigate('/')
+            })
+
+
+
+    }
+
     return (
         <Container>
             <Main>
                 <h1>My Wallet</h1>
-                <form>
-                    <Input placeholder="Nome" />
-                    <Input placeholder="E-mail" />
-                    <Input placeholder="Senha" />
-                    <Input placeholder="Confirme a senha" />
+                <form onSubmit={CreactAcount}>
+                    <Input type='text' placeholder="Nome" onChange={(e) => { setName(e.target.value) }} value={name} />
+                    <Input type='email' placeholder="E-mail" onChange={(e) => { setEmail(e.target.value) }} value={email} />
+                    <Input type='password' placeholder="Senha" onChange={(e) => { setPassword(e.target.value) }} value={password} />
+                    <Input type='password' placeholder="Confirme a senha" onChange={(e) => { setConfirm(e.target.value) }} value={confirm} />
                     <Button>Cadastrar</Button>
                 </form>
-                <h2>Já tem uma conta? Entre agora!</h2>
+                <h2 onClick={() => navigate('/')}>Já tem uma conta? Entre agora!</h2>
             </Main>
         </Container>
     )
