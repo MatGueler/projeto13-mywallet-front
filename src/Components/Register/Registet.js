@@ -28,16 +28,16 @@ function Register() {
             name
         }
 
-        const promise = axios.post('localhost:5000', body)
+        const promise = axios.post('http://localhost:5000/cadastro', body)
 
         promise
             .then(res => {
                 alert('deu bom')
+                console.log(res.data)
+                navigate('/')
             })
             .catch(err => {
                 console.log(err)
-                console.log(body)
-                navigate('/')
             })
 
 

@@ -25,14 +25,14 @@ function Login() {
         }
         else {
 
-            const promise = axios.post('localhost:5000', body)
+            const promise = axios.post('http://localhost:5000/', body)
 
             promise.then(res => {
-                console.log('deu')
+                console.log(res.data)
+                navigate('/menu')
             })
                 .catch(err => {
                     console.log(err)
-                    navigate('/menu')
                 })
 
         }
