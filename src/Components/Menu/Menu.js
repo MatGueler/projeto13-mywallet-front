@@ -6,6 +6,8 @@ import { AiOutlineMinusCircle } from 'react-icons/ai';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+import { useContext } from "react";
+import TokenContext from "../Context/TokenContext";
 
 function Extrato({ statement, setSaldo }) {
 
@@ -67,9 +69,15 @@ function Menu() {
 
     const [statement, setStatement] = useState([])
     const [saldo, setSaldo] = useState(0)
+    const { token } = useContext(TokenContext)
 
     useEffect(() => {
-        const promise = axios.get('http://localhost:5000/menu')
+
+        const promise = axios.get('http://localhost:5000/menu', {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
 
         promise.then(res => {
             setStatement(res.data)

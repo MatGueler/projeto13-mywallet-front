@@ -61,19 +61,28 @@ justify-content: space-around;
 align-items: center;
 margin-bottom: 20px;  
 
+p:first-child {
+    width: 100px;
+    word-wrap:normal;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 10px;
+}
+
 p {
     width: 100px;
     word-wrap:normal;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px; 
+    font-size: 10px; 
 }
 
 span {
     width: 100px;
     color: ${(props) => props.color};
-    text-align: left;
+    text-align: right;
     padding-left: 10px;
 }
 `

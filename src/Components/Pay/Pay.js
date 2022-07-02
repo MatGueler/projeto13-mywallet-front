@@ -5,12 +5,15 @@ import { Input } from "../Input/Input";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useContext } from "react";
+import TokenContext from "../Context/TokenContext";
 
 
 function Pay() {
 
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const { token } = useContext(TokenContext)
 
     let navigate = useNavigate()
 
@@ -27,10 +30,15 @@ function Pay() {
             type: 'pay'
         }
 
-        const promise = axios.post('http://localhost:5000/saida', body)
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+
+        const promise = axios.post('http://localhost:5000/saida', body, config)
 
         promise.then(res => {
-            console.log(res.data)
             navigate('/menu')
         })
             .catch(err => { console.log(err) })

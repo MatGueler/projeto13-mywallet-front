@@ -32,7 +32,6 @@ function Register() {
 
         promise
             .then(res => {
-                alert('deu bom')
                 console.log(res.data)
                 navigate('/')
             })

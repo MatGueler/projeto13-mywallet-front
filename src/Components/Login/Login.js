@@ -5,12 +5,15 @@ import { Input } from '../Input/Input'
 import { Button } from "../Button/Button";
 import { Main } from "./Login-style";
 import axios from 'axios'
+import { useContext } from "react";
+import TokenContext from "../Context/TokenContext";
 
 
 function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const { setToken } = useContext(TokenContext)
 
     let navigate = useNavigate()
 
@@ -28,7 +31,7 @@ function Login() {
             const promise = axios.post('http://localhost:5000/', body)
 
             promise.then(res => {
-                console.log(res.data)
+                setToken(res.data)
                 navigate('/menu')
             })
                 .catch(err => {
