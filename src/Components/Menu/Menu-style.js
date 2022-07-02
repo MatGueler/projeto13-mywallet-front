@@ -26,17 +26,19 @@ export const Historic = styled.div`
     width: 100%;
     height: 430px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     border-radius: 5px;
     background-color: #FFFFFF;
     margin-bottom: 20px;
-    padding: 5px;
+    padding: 20px 5px 0 5px;
     position: relative;
 `
 
 export const Vazio = styled.div`
-    width: 200px;
+    width: 100%;
+    height: 100%;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     text-align: center;
     font-size: 20px;
@@ -47,7 +49,6 @@ export const Cheio = styled.div`
 width: 100%;
 display: flex;
 flex-direction: column;
-margin-bottom: 50px;
 box-sizing: border-box;
 overflow: hidden;
 overflow-y: scroll;
@@ -57,14 +58,23 @@ export const Movimentation = styled.div`
 width: 100%;
 display: flex;
 justify-content: space-around;
+align-items: center;
+margin-bottom: 20px;  
 
 p {
     width: 100px;
+    word-wrap:normal;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 20px;
-    margin-bottom: 20px;    
+    justify-content: center;
+    font-size: 15px; 
+}
+
+span {
+    width: 100px;
+    color: ${(props) => props.color};
+    text-align: left;
+    padding-left: 10px;
 }
 `
 
@@ -81,10 +91,6 @@ p {
     font-size: 17px;
     font-weight: 700;
 }
-`
-
-export const Entrada = styled.div`
-
 `
 
 export const Transactions = styled.div`
