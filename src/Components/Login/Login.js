@@ -13,7 +13,7 @@ function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { setToken } = useContext(TokenContext)
+    const { setToken, setMyName } = useContext(TokenContext)
 
     let navigate = useNavigate()
 
@@ -31,7 +31,8 @@ function Login() {
             const promise = axios.post('http://localhost:5000/', body)
 
             promise.then(res => {
-                setToken(res.data)
+                setToken(res.data.token)
+                setMyName(res.data.myName)
                 navigate('/menu')
             })
                 .catch(err => {

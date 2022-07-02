@@ -24,13 +24,13 @@ h1 {
 
 export const Historic = styled.div`
     width: 100%;
-    height: 430px;
+    height: 420px;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     background-color: #FFFFFF;
     margin-bottom: 20px;
-    padding: 20px 5px 0 5px;
+    padding-top: 20px;
     position: relative;
 `
 
@@ -50,8 +50,8 @@ width: 100%;
 display: flex;
 flex-direction: column;
 box-sizing: border-box;
-overflow: hidden;
-overflow-y: scroll;
+padding: 0 5px;
+box-sizing: border-box;
 `
 
 export const Movimentation = styled.div`
@@ -62,8 +62,8 @@ align-items: center;
 margin-bottom: 20px;  
 
 p:first-child {
-    width: 100px;
-    word-wrap:normal;
+    width: 90px;
+    word-break:break-all;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -71,32 +71,40 @@ p:first-child {
 }
 
 p {
-    width: 100px;
-    word-wrap:normal;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px; 
+    width: 90px;
+    word-break:break-all;
+    font-size: 10px;
+    text-align: center;
 }
 
 span {
-    width: 100px;
+    width: 100%;
     color: ${(props) => props.color};
     text-align: right;
-    padding-left: 10px;
+    padding: 0 10px;
 }
+`
+
+export const Statement = styled.div`
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-bottom: 50px;
 `
 
 export const Saldo = styled.div`
 width: 100%;
 display: flex;
 align-items: center;
+justify-content: space-between;
 position: absolute;
-left: 20px;
 bottom: 0;
 height: 50px;
+padding: 0 5px;
+box-sizing: border-box;
 
 p {
+    width: 100px;
+    word-break:break-all;
     font-size: 17px;
     font-weight: 700;
 }

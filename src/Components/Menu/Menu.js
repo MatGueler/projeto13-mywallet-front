@@ -1,5 +1,5 @@
 import { Container } from '../Container/Container'
-import { Main, Header, Historic, Transactions, Vazio, Cheio, Movimentation, Saldo } from './Menu-style';
+import { Main, Header, Historic, Transactions, Vazio, Cheio, Movimentation, Saldo, Statement } from './Menu-style';
 import { IoExitOutline } from 'react-icons/io5';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { AiOutlineMinusCircle } from 'react-icons/ai';
@@ -69,7 +69,7 @@ function Menu() {
 
     const [statement, setStatement] = useState([])
     const [saldo, setSaldo] = useState(0)
-    const { token } = useContext(TokenContext)
+    const { token, myName } = useContext(TokenContext)
 
     useEffect(() => {
 
@@ -81,7 +81,6 @@ function Menu() {
 
         promise.then(res => {
             setStatement(res.data)
-            console.log(res.data)
         }).catch(err => console.log(err))
     }, [])
 
@@ -89,13 +88,15 @@ function Menu() {
         <Container>
             <Main>
                 <Header>
-                    <h1>Olá, fulano!</h1>
+                    <h1>Olá, {myName}!</h1>
                     <IoExitOutline size={25} color="#FFFFFF" cursor='pointer' onClick={() => navigate('/')} />
                 </Header>
                 <Historic>
-                    {< Extrato statement={statement} saldo={saldo} setSaldo={setSaldo} />}
+                    <Statement>
+                        {< Extrato statement={statement} saldo={saldo} setSaldo={setSaldo} />}
+                    </Statement>
                     <Saldo>
-                        <p>Saldo</p>
+                        <p>SALDO</p>
                         <p>R$ {saldo}</p>
                     </Saldo>
                 </Historic>
