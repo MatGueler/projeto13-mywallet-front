@@ -7,25 +7,36 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
-function Extrato({ statement, color, setColor, saldo, setSaldo }) {
+function Extrato({ statement, setSaldo }) {
 
     let soma = 0
 
     function ConteudoExtrato({ item }) {
 
         if (item.type === 'recive') {
-            setColor('green')
-        }
 
-        return (
-            <Cheio>
-                <Movimentation color={color}>
-                    <p>{item.date}</p>
-                    <p>{item.description}</p>
-                    <p><span>R$ {Number(item.price).toFixed(2)}</span></p>
-                </Movimentation>
-            </Cheio>
-        )
+            return (
+                <Cheio>
+                    <Movimentation color={'green'}>
+                        <p>{item.date}</p>
+                        <p>{item.description}</p>
+                        <p><span>R$ {Number(item.price).toFixed(2)}</span></p>
+                    </Movimentation>
+                </Cheio>
+            )
+        }
+        if (item.type === 'pay') {
+
+            return (
+                <Cheio>
+                    <Movimentation color={'red'}>
+                        <p>{item.date}</p>
+                        <p>{item.description}</p>
+                        <p><span>R$ {Number(item.price).toFixed(2)}</span></p>
+                    </Movimentation>
+                </Cheio>
+            )
+        }
 
     }
 
@@ -38,7 +49,11 @@ function Extrato({ statement, color, setColor, saldo, setSaldo }) {
     }
 
     let valores = statement.map((item, index) => {
-        soma += Number(item.price);
+        if (item.type === 'recive') {
+            soma += Number(item.price);
+        } else {
+            soma -= Number(item.price);
+        }
         return < ConteudoExtrato key={index} item={item} />
     }
     )
@@ -52,7 +67,6 @@ function Menu() {
 
     const [statement, setStatement] = useState([])
     const [saldo, setSaldo] = useState(0)
-    const [color, setColor] = useState('red')
 
     useEffect(() => {
         const promise = axios.get('http://localhost:5000/menu')
@@ -71,7 +85,7 @@ function Menu() {
                     <IoExitOutline size={25} color="#FFFFFF" cursor='pointer' onClick={() => navigate('/')} />
                 </Header>
                 <Historic>
-                    {< Extrato statement={statement} color={color} setColor={setColor} saldo={saldo} setSaldo={setSaldo} />}
+                    {< Extrato statement={statement} saldo={saldo} setSaldo={setSaldo} />}
                     <Saldo>
                         <p>Saldo</p>
                         <p>R$ {saldo}</p>
