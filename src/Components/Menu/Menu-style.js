@@ -43,12 +43,12 @@ export const Vazio = styled.div`
     text-align: center;
     font-size: 20px;
     color: #868686;
+    position: absolute;
 `
 
 export const Cheio = styled.div`
 width: 100%;
 display: flex;
-flex-direction: column;
 box-sizing: border-box;
 padding: 0 5px;
 box-sizing: border-box;
@@ -60,7 +60,6 @@ export const Movimentation = styled.div`
 width: 100%;
 display: flex;
 justify-content: space-around;
-align-items: center;
 margin-bottom: 20px; 
 font-size: 10px;
 
@@ -73,7 +72,6 @@ p {
 p:first-child {
     width: 30px;
     display: flex;
-    align-items: center;
     justify-content: left;
 }
 

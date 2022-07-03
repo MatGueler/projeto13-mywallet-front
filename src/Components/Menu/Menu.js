@@ -7,13 +7,35 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useContext } from "react";
+import { IoClose } from 'react-icons/io5'
 import TokenContext from "../Context/TokenContext";
 
-function Extrato({ statement, setSaldo }) {
+function Extrato({ statement, setStatement, setSaldo, token }) {
 
     let sum = 0
 
     function ConteudoExtrato({ item }) {
+
+        function DeleteTransfer() {
+
+            let confirmation = window.confirm('Deseja apagar essa transferência?')
+
+            const config = {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                data: {
+                    transferId: item._id
+                }
+            }
+
+            if (confirmation) {
+                const promise = axios.delete('http://localhost:5000/menu', config)
+                    .then(res => {
+                        setStatement(res.data)
+                    }).catch(err => console.log(err))
+            }
+        }
 
         if (item.type === 'recive') {
 
@@ -24,6 +46,7 @@ function Extrato({ statement, setSaldo }) {
                         <p>{item.description}</p>
                         <p>R$ {Number(item.price).toFixed(2)}</p>
                     </Movimentation>
+                    <IoClose cursor='pointer' onClick={DeleteTransfer} />
                 </Cheio>
             )
         }
@@ -34,8 +57,9 @@ function Extrato({ statement, setSaldo }) {
                     <Movimentation color={'#C70000'}>
                         <p>{item.date}</p>
                         <p>{item.description}</p>
-                        <p><span>R$ {Number(item.price).toFixed(2)}</span></p>
+                        <p>R$ {Number(item.price).toFixed(2)}</p>
                     </Movimentation>
+                    <IoClose cursor='pointer' onClick={DeleteTransfer} />
                 </Cheio>
             )
         }
@@ -93,7 +117,7 @@ function Menu() {
                 </Header>
                 <Historic>
                     <Statement>
-                        {< Extrato statement={statement} saldo={saldo} setSaldo={setSaldo} />}
+                        {< Extrato statement={statement} setStatement={setStatement} saldo={saldo} setSaldo={setSaldo} token={token} />}
                     </Statement>
                     {(saldo >= 0) ?
                         <Saldo color='#03AC00'>
