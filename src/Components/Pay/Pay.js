@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
+import { AiOutlineCloseSquare } from 'react-icons/ai'
 import TokenContext from "../Context/TokenContext";
 
 
@@ -55,6 +56,7 @@ function Pay() {
                     <h1>
                         Nova saída
                     </h1>
+                    <AiOutlineCloseSquare size={25} cursor='pointer' onClick={() => navigate('/menu')} color='#FFFFFF' />
                 </Header>
                 <form onSubmit={Finish}>
                     <Input type='text' placeholder="Valor" onChange={(e) => { setPrice(e.target.value) }} value={price} />

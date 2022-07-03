@@ -9,6 +9,8 @@ flex-direction: column;
 export const Header = styled.div`
 
 margin-bottom: 40px;
+display: flex;
+justify-content: space-between;
 
 h1 {
     font-size: 26px;
