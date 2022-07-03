@@ -11,7 +11,7 @@ import TokenContext from "../Context/TokenContext";
 
 function Extrato({ statement, setSaldo }) {
 
-    let soma = 0
+    let sum = 0
 
     function ConteudoExtrato({ item }) {
 
@@ -19,10 +19,10 @@ function Extrato({ statement, setSaldo }) {
 
             return (
                 <Cheio>
-                    <Movimentation color={'green'}>
+                    <Movimentation color={'#03AC00'}>
                         <p>{item.date}</p>
                         <p>{item.description}</p>
-                        <p><span>R$ {Number(item.price).toFixed(2)}</span></p>
+                        <p>R$ {Number(item.price).toFixed(2)}</p>
                     </Movimentation>
                 </Cheio>
             )
@@ -31,7 +31,7 @@ function Extrato({ statement, setSaldo }) {
 
             return (
                 <Cheio>
-                    <Movimentation color={'red'}>
+                    <Movimentation color={'#C70000'}>
                         <p>{item.date}</p>
                         <p>{item.description}</p>
                         <p><span>R$ {Number(item.price).toFixed(2)}</span></p>
@@ -50,17 +50,17 @@ function Extrato({ statement, setSaldo }) {
         )
     }
 
-    let valores = statement.map((item, index) => {
+    let values = statement.map((item, index) => {
         if (item.type === 'recive') {
-            soma += Number(item.price);
+            sum += Number(item.price);
         } else {
-            soma -= Number(item.price);
+            sum -= Number(item.price);
         }
         return < ConteudoExtrato key={index} item={item} />
     }
     )
-    setSaldo(soma.toFixed(2))
-    return (valores)
+    setSaldo(sum.toFixed(2))
+    return (values)
 }
 
 function Menu() {
@@ -95,10 +95,15 @@ function Menu() {
                     <Statement>
                         {< Extrato statement={statement} saldo={saldo} setSaldo={setSaldo} />}
                     </Statement>
-                    <Saldo>
-                        <p>SALDO</p>
-                        <p>R$ {saldo}</p>
-                    </Saldo>
+                    {(saldo >= 0) ?
+                        <Saldo color='#03AC00'>
+                            <p>SALDO</p>
+                            <p>R$ {saldo}</p>
+                        </Saldo> :
+                        <Saldo color='#C70000'>
+                            <p>SALDO</p>
+                            <p>R$ {saldo}</p>
+                        </Saldo>}
                 </Historic>
                 <Transactions>
                     <button onClick={() => navigate('/entrada')}>

@@ -52,6 +52,8 @@ flex-direction: column;
 box-sizing: border-box;
 padding: 0 5px;
 box-sizing: border-box;
+font-size: 10px;
+font-weight: 400;
 `
 
 export const Movimentation = styled.div`
@@ -59,26 +61,23 @@ width: 100%;
 display: flex;
 justify-content: space-around;
 align-items: center;
-margin-bottom: 20px;  
-
-p:first-child {
-    width: 90px;
-    word-break:break-all;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    font-size: 10px;
-}
+margin-bottom: 20px; 
+font-size: 10px;
 
 p {
     width: 90px;
     word-break:break-all;
-    font-size: 10px;
-    text-align: center;
+    text-align: left;
 }
 
-span {
-    width: 100%;
+p:first-child {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+p:last-child {
     color: ${(props) => props.color};
     text-align: right;
     padding: 0 10px;
@@ -103,10 +102,17 @@ padding: 0 5px;
 box-sizing: border-box;
 
 p {
-    width: 100px;
+    width: 30%;
     word-break:break-all;
     font-size: 17px;
     font-weight: 700;
+}
+
+p:last-child{
+    width: 70%;
+    color: ${props => props.color};
+    font-weight: 400;
+    text-align: right;
 }
 `
 
