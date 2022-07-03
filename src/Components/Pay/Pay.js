@@ -20,7 +20,11 @@ function Pay() {
     function Finish(event) {
         event.preventDefault();
 
-        if (price.length === 0 || isNaN(Number(price))) {
+        const EMPTY = price.length === 0
+        const ISNUMBER = isNaN(Number(price))
+        const SYMBOLS = (price.includes('-') || (price.includes('+')))
+
+        if (EMPTY || ISNUMBER || SYMBOLS) {
             return alert('Informe os dados corretamente!')
         }
 
