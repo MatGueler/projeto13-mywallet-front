@@ -30,7 +30,7 @@ function Extrato({ statement, setStatement, setSaldo, token }) {
             }
 
             if (confirmation) {
-                const promise = axios.delete('http://localhost:5000/menu', config)
+                const promise = axios.delete('https://project-mywallet-back.herokuapp.com/menu', config)
                     .then(res => {
                         setStatement(res.data)
                     }).catch(err => console.log(err))
@@ -97,7 +97,7 @@ function Menu() {
 
     useEffect(() => {
 
-        const promise = axios.get('http://localhost:5000/menu', {
+        const promise = axios.get('https://project-mywallet-back.herokuapp.com/menu', {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

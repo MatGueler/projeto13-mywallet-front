@@ -28,7 +28,7 @@ function Login() {
         }
         else {
 
-            const promise = axios.post('http://localhost:5000/', body)
+            const promise = axios.post('https://project-mywallet-back.herokuapp.com/', body)
 
             promise.then(res => {
                 setToken(res.data.token)

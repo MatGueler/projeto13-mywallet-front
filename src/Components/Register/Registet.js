@@ -28,7 +28,8 @@ function Register() {
             name
         }
 
-        const promise = axios.post('http://localhost:5000/cadastro', body)
+        // const promise = axios.post('http://localhost:5000/cadastro', body)
+        const promise = axios.post('https://project-mywallet-back.herokuapp.com/cadastro', body)
 
         promise
             .then(res => {

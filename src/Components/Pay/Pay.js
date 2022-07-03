@@ -41,7 +41,7 @@ function Pay() {
             }
         }
 
-        const promise = axios.post('http://localhost:5000/saida', body, config)
+        const promise = axios.post('https://project-mywallet-back.herokuapp.com//saida', body, config)
 
         promise.then(res => {
             navigate('/menu')

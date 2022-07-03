@@ -41,7 +41,7 @@ function Recive() {
             }
         }
 
-        const promise = axios.post('http://localhost:5000/entrada', body, config)
+        const promise = axios.post('https://project-mywallet-back.herokuapp.com/entrada', body, config)
 
         promise.then(res => {
             navigate('/menu')
