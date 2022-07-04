@@ -22,6 +22,8 @@ function Recive() {
     function Finish(event) {
         event.preventDefault();
 
+        setDisable(!disable);
+
         const EMPTY = price.length === 0
         const ISNUMBER = isNaN(Number(price))
         const SYMBOLS = (price.includes('-') || (price.includes('+')))
@@ -62,7 +64,7 @@ function Recive() {
                 <form onSubmit={Finish}>
                     <Input type='text' placeholder="Valor" onChange={(e) => { setPrice(e.target.value) }} value={price} disabled={disable} />
                     <Input type='text' placeholder="Descrição" onChange={(e) => { setDescription(e.target.value) }} value={description} disabled={disable} />
-                    <Button disabled={disable} onClick={() => setDisable(!disable)}>
+                    <Button disabled={disable}>
                         Salvar entrada
                     </Button>
                 </form>

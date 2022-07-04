@@ -22,6 +22,8 @@ function Pay() {
     function Finish(event) {
         event.preventDefault();
 
+        setDisable(!disable);
+
         const EMPTY = price.length === 0
         const ISNUMBER = isNaN(Number(price))
         const SYMBOLS = (price.includes('-') || (price.includes('+')))
