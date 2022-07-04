@@ -2,11 +2,12 @@ import styled from 'styled-components'
 
 
 export const Main = styled.div`
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+    padding: 20px;
     box-sizing: border-box;
 `
 
