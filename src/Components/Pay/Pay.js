@@ -64,7 +64,7 @@ function Pay() {
                 <form onSubmit={Finish}>
                     <Input type='text' placeholder="Valor" onChange={(e) => { setPrice(e.target.value) }} value={price} disabled={disable} />
                     <Input type='text' placeholder="Descrição" onChange={(e) => { setDescription(e.target.value) }} value={description} disabled={disable} />
-                    <Button disabled={disable} onClick={() => setDisable(!disable)}>
+                    <Button disabled={disable}>
                         Salvar saída
                     </Button>
                 </form>
