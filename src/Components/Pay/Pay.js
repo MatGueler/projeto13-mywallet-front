@@ -14,6 +14,7 @@ function Pay() {
 
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const [disable, setDisable] = useState(false)
     const { token } = useContext(TokenContext)
 
     let navigate = useNavigate()
@@ -59,9 +60,9 @@ function Pay() {
                     <AiOutlineCloseSquare size={25} cursor='pointer' onClick={() => navigate('/menu')} color='#FFFFFF' />
                 </Header>
                 <form onSubmit={Finish}>
-                    <Input type='text' placeholder="Valor" onChange={(e) => { setPrice(e.target.value) }} value={price} />
-                    <Input type='text' placeholder="Descrição" onChange={(e) => { setDescription(e.target.value) }} value={description} />
-                    <Button>
+                    <Input type='text' placeholder="Valor" onChange={(e) => { setPrice(e.target.value) }} value={price} disabled={disable} />
+                    <Input type='text' placeholder="Descrição" onChange={(e) => { setDescription(e.target.value) }} value={description} disabled={disable} />
+                    <Button disabled={disable} onClick={() => setDisable(!disable)}>
                         Salvar saída
                     </Button>
                 </form>
