@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { useContext } from "react";
 import { IoClose } from 'react-icons/io5'
+import Loading from '../Loading/Loading';
 import TokenContext from "../Context/TokenContext";
 
 function Extrato({ statement, setStatement, setSaldo, token }) {
@@ -93,6 +94,7 @@ function Menu() {
 
     const [statement, setStatement] = useState([])
     const [saldo, setSaldo] = useState(0)
+    const [loading, setLoading] = useState(true)
     const { token, myName } = useContext(TokenContext)
 
     useEffect(() => {
@@ -105,11 +107,13 @@ function Menu() {
 
         promise.then(res => {
             setStatement(res.data)
+            setLoading(!loading)
         }).catch(err => console.log(err))
     }, [])
 
     return (
         <Container>
+            {loading ? <Loading /> : ''}
             <Main>
                 <Header>
                     <h1>Olá, {myName}!</h1>

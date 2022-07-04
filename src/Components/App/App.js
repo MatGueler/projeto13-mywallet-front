@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from '../Login/Login';
 import Menu from '../Menu/Menu';
-import Register from '../Register/Registet';
+import Register from '../Register/Register';
 import Recive from '../Recive/Recive';
 import Pay from '../Pay/Pay';
 import TokenContext from '../Context/TokenContext'
