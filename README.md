@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# <p align = "center"> MyWallet - front </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align = "center">
+   <img src="https://img.shields.io/badge/author-Mateus Gueler-4dae71?style=flat-square" />
+   <img src="https://img.shields.io/github/languages/count/MatGueler/projeto13-mywallet-front?color=4dae71&style=flat-square" />
+</p>
 
-## Available Scripts
+## :clipboard: Descrição
 
-In the project directory, you can run:
+O **mywallet** é um aplicativo focado na organização financeira, onde o usuário indica os valores recebidos e pagos durante o período. O intuito desse aplicativo é facilitar o monitoramento da saúde financeira do usuário.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## :computer: Tecnologias e Conceitos
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- REST APIs
+- JWTs
+- Node.js (v16.17.0)
+- JavaScript
+- React
+- Syled components
+- Vercel
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## :rocket: Rotas
 
-### `npm run build`
+```yml
+Endpoint: '/cadastro'
+    - Rota para cadastrar um usuário;
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```yml
+Endpoint: '/'
+    - Rota para fazer login;
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```yml
+Endpoint: '/menu (autenticada)'
+    - Rota para visualizar seu histórico de transações;
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```yml
+Endpoint: '/entrada (autenticada)'
+    - Rota para adicionar novo valor em sua conta;
+```
 
-### `npm run eject`
+```yml
+Endpoint: '/saida'
+    - Rota para indicar pagamento realizdo;
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🏁 Rodando a aplicação
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Local
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ESse projeto foi inicializado utilizando [Create React App](https://github.com/facebook/create-react-app), então, garanta que o [Node.js](https://nodejs.org/en/download/) e [npm](https://www.npmjs.com/) estejam na versão estavel mais atualizada na sua máquina.
 
-## Learn More
+Primeiro, clone o repositório com o comando abaixo:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+git clone git@github.com:MatGueler/projeto13-mywallet-front.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Assim, entre na pasta do projeto dentro do terminal e rode o comando para instalar as dependências do projeto.
 
-### Code Splitting
+```
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Por fim, basta inicializar o projeto usando o comando abaixo:
 
-### Analyzing the Bundle Size
+```
+npm run start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+:stop_sign: Lembre-se de garantir que o back-end esteja rodando, basta seguir as instruções do repositório [back-end repository](https://github.com/MatGueler/projeto13-mywallet-back).
